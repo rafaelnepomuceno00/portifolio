@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfólio de Rafael Nepomuceno — desenvolvedor web com mais de 5 anos de experiência. Sites reais, publicados e em uso por negócios locais.">
+<title>Rafael Nepomuceno — Portfólio</title>
+<style>
+  :root {
+    --bg: #12151a;
+    --surface: #1b2027;
+    --surface-2: #232a32;
+    --border: #2c343d;
+    --border-strong: #454f5b;
+    --text: #f0f2ef;
+    --text-secondary: #a9b3ac;
+    --text-muted: #7d867f;
+    --accent: #2fae74;
+    --accent-ink: #062015;
+    --radius: 16px;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(23,18,17,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 24px;
+    max-width: 760px; margin: 0 auto;
+  }
+  .logo {
+    font-size: 15px; font-weight: 800;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .logo .dot { color: var(--accent); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a {
+    font-size: 14px; text-decoration: none; color: var(--text-secondary);
+    transition: color .2s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
+  .nav-links .li-linkedin {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid var(--border-strong);
+    padding: 7px 14px; border-radius: 999px;
+    color: var(--text);
+  }
+  .nav-links .li-linkedin:hover { border-color: var(--accent); color: var(--accent); }
+
+  @media (max-width: 480px) {
+    .nav-links { gap: 12px; }
+    .nav-links a:not(.li-linkedin) { display: none; }
+  }
+
+  /* HERO */
+  .hero { padding: 84px 0 76px; }
+  .eyebrow {
+    font-size: 13px; font-weight: 700; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 0 0 18px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 6vw, 54px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+    margin: 0 0 22px;
+    opacity: 0; transform: translateY(14px);
+    animation: rise .7s ease .1s forwards;
+  }
+  .hero h1 .accent { color: var(--accent); }
+  .hero p.lede {
+    font-size: 18px; color: var(--text-secondary);
+    max-width: 52ch; margin: 0 0 38px;
+    opacity: 0; transform: translateY(14px);
+    animation: rise .7s ease .25s forwards;
+  }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+  .hero-ctas {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    opacity: 0; transform: translateY(14px);
+    animation: rise .7s ease .4s forwards;
+  }
+  .btn {
+    font-family: var(--font);
+    font-size: 15px; font-weight: 700;
+    padding: 13px 22px; border-radius: 999px;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-ghost { border: 1px solid var(--border-strong); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  /* SECTIONS */
+  .section { padding: 76px 0; border-top: 1px solid var(--border); }
+  .section h2 {
+    font-size: clamp(24px, 3.4vw, 34px);
+    letter-spacing: -0.02em; font-weight: 800; margin: 0 0 44px;
+    max-width: 22ch;
+  }
+
+  /* PROJECT LIST */
+  .list { display: flex; flex-direction: column; gap: 20px; }
+
+  .card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px 30px 26px;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity .6s ease, transform .6s ease, border-color .25s ease;
+  }
+  .card.is-visible { opacity: 1; transform: translateY(0); }
+  .card:hover { border-color: var(--border-strong); }
+
+  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .status { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--accent); white-space: nowrap; }
+  .status .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+
+  .category {
+    font-size: 12px; font-weight: 700; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.07em;
+    margin: 0;
+  }
+  .card h3 { font-size: 20px; margin: 0 0 10px; letter-spacing: -0.01em; }
+
+  @media (max-width: 480px) {
+    .card-top { flex-wrap: wrap; }
+  }
+  .card p.desc { font-size: 15px; color: var(--text-secondary); margin: 0 0 18px; max-width: 56ch; }
+  .card .visit {
+    font-size: 14.5px; font-weight: 700; color: var(--accent);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    border-bottom: 1px solid transparent;
+  }
+  .card .visit:hover { border-bottom-color: var(--accent); }
+
+  /* TRUST */
+  .trust-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  @media (max-width: 640px) { .trust-list { grid-template-columns: 1fr; } }
+  .trust-item .num {
+    font-weight: 800; color: var(--accent); font-size: 14px; margin-bottom: 10px;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .trust-item h3 { font-size: 17.5px; margin: 0 0 10px; }
+  .trust-item p { color: var(--text-secondary); font-size: 14.5px; margin: 0; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    max-width: 760px; margin: 0 auto;
+    font-size: 13px; color: var(--text-muted);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero h1, .hero p.lede, .hero-ctas { animation: none; opacity: 1; transform: none; }
+    .card { transition: none; opacity: 1; transform: none; }
+    .status .dot { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">Rafael Nepomuceno<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="#trabalhos">Trabalhos</a>
+      <a href="#confianca">Por que eu</a>
+      <a href="https://www.linkedin.com/in/rafael-nepomuceno/" target="_blank" rel="noopener" class="li-linkedin">LinkedIn ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <p class="eyebrow">Portfólio</p>
+  <h1>Cada projeto aqui está <span class="accent">no ar</span>.</h1>
+  <p class="lede">Sites publicados, atendendo negócio real — não maquete, não protótipo. Programação há mais de 5 anos.</p>
+  <div class="hero-ctas">
+    <a href="#trabalhos" class="btn btn-primary">Ver os trabalhos</a>
+    <a href="https://www.linkedin.com/in/rafael-nepomuceno/" target="_blank" rel="noopener" class="btn btn-ghost">Meu LinkedIn ↗</a>
+  </div>
+</header>
+
+<section class="section" id="trabalhos">
+  <div class="wrap">
+    <p class="eyebrow">Trabalhos no ar</p>
+    <h2>Projetos publicados</h2>
+    <div class="list">
+
+      <article class="card reveal">
+        <div class="card-top">
+          <p class="category">Tatuagem</p>
+          <div class="status"><span class="dot"></span>No ar</div>
+        </div>
+        <h3>Hell Estúdio</h3>
+        <p class="desc">Estúdio de tatuagem autoral em Montes Claros, MG. O site apresenta o trabalho dos artistas e as informações de segurança e higiene, com convite direto pra agendar sessão.</p>
+        <a class="visit" href="https://hellestudio.com.br/" target="_blank" rel="noopener">Link para acessar ↗</a>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-top">
+          <p class="category">E-commerce</p>
+          <div class="status"><span class="dot"></span>No ar</div>
+        </div>
+        <h3>Nalu Cachos</h3>
+        <p class="desc">Loja virtual de produtos pra cabelo cacheado e crespo — shampoos, máscaras, leave-ins e kits de tratamento, com frete pra todo o Brasil e parcelamento no cartão.</p>
+        <a class="visit" href="https://www.lojanalucachos.com.br/" target="_blank" rel="noopener">Link para acessar ↗</a>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-top">
+          <p class="category">Site pessoal</p>
+          <div class="status"><span class="dot"></span>No ar</div>
+        </div>
+        <h3>Savana</h3>
+        <p class="desc">Site pessoal de Savana the Witch — bruxa, sacerdotisa e professora, com mais de 200 mil seguidores nas redes — reunindo informações e rituais pra sua comunidade.</p>
+        <a class="visit" href="https://savana-site.web.app/" target="_blank" rel="noopener">Link para acessar ↗</a>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-top">
+          <p class="category">Advocacia</p>
+          <div class="status"><span class="dot"></span>No ar</div>
+        </div>
+        <h3>Rodrigo Veloso Advocacia</h3>
+        <p class="desc">Site para advogado trabalhista em Minas Gerais — áreas de atuação, depoimentos de clientes e contato direto pelo WhatsApp em cada seção da página.</p>
+        <a class="visit" href="https://rodrigoveloso.adv.br/" target="_blank" rel="noopener">Link para acessar ↗</a>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-top">
+          <p class="category">Institucional</p>
+          <div class="status"><span class="dot"></span>No ar</div>
+        </div>
+        <h3>Leviassa</h3>
+        <p class="desc">Site institucional desenvolvido para a marca de pães Leviassa. Está publicado, mas a marca optou por não utilizá-lo como site oficial.</p>
+        <a class="visit" href="https://leviassa-b282c.web.app/" target="_blank" rel="noopener">Link para acessar ↗</a>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-top">
+          <p class="category">Infraestrutura</p>
+          <div class="status"><span class="dot"></span>No ar</div>
+        </div>
+        <h3>Mendes & Melo Advogados</h3>
+        <p class="desc">Escritório de advocacia full-service em Montes Claros, MG — trabalhista, imobiliário, família e previdenciário. Aqui cuidei da infraestrutura e publicação do site; o desenvolvimento foi de outro profissional.</p>
+        <a class="visit" href="https://mendesemelo.com/" target="_blank" rel="noopener">Link para acessar ↗</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="confianca">
+  <div class="wrap">
+    <p class="eyebrow">Por que confiar</p>
+    <h2>Não é só quem promete um site</h2>
+    <div class="trust-list">
+      <div class="trust-item">
+        <p class="num">5+ anos</p>
+        <h3>Programando de verdade</h3>
+        <p>Não é curso de fim de semana — desenvolvimento web é o que eu faço há mais de cinco anos.</p>
+      </div>
+      <div class="trust-item">
+        <p class="num">100%</p>
+        <h3>Site no ar, não maquete</h3>
+        <p>Todo projeto aqui em cima é um link que você pode abrir agora e testar — nada de imagem estática vendendo promessa.</p>
+      </div>
+      <div class="trust-item">
+        <p class="num">Local</p>
+        <h3>Entendo o seu tipo de negócio</h3>
+        <p>Boa parte dos meus clientes é comércio local — sei como esse negócio funciona no dia a dia, não só em teoria.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-final">
+  <div class="wrap">
+    <p class="eyebrow">Vamos colocar seu negócio no ar?</p>
+    <h2>Bora conversar sobre o seu site?</h2>
+    <div class="hero-ctas" style="animation:none; opacity:1; transform:none;">
+      <a href="https://www.linkedin.com/in/rafael-nepomuceno/" target="_blank" rel="noopener" class="btn btn-primary">Falar no LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Rafael Nepomuceno — desenvolvedor web</span>
+  <span>Montes Claros, MG</span>
+</footer>
+
+<script>
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+  }
+</script>
+
+</body>
+</html>
