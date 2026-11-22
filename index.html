@@ -253,6 +253,7 @@
     max-width: 1080px;
     margin: 0 auto;
     padding: 96px 32px;
+    scroll-margin-top: 72px;
   }
   .section-head {
     display: flex;
@@ -362,6 +363,7 @@
   .reasons h3 { margin: 0 0 8px; font-size: 28px; }
   .reasons p { margin: 0; color: var(--soft); font-weight: 300; max-width: 52ch; }
 
+  .section-cta { margin-top: 36px; }
   .close { padding-top: 40px; }
   .close h2 { max-width: 12ch; margin-bottom: 18px; }
   .close .lede { margin-bottom: 28px; }
@@ -400,7 +402,8 @@
     .hero h1 { font-size: clamp(46px, 13vw, 68px); }
   }
   @media (max-width: 560px) {
-    .nav-links a[href="#sobre"] { display: none; }
+    .nav-links a[href="#sobre"],
+    .nav-links a[href="#site"] { display: none; }
     .nav-links { gap: 16px; }
     .facts { gap: 18px; }
     .work { grid-template-columns: 36px minmax(0, 1fr); }
@@ -425,6 +428,7 @@
     <a href="#topo" class="logo"><i></i>Rafael Nepomuceno</a>
     <div class="nav-links">
       <a href="#trabalhos">Trabalhos</a>
+      <a href="#site">O site</a>
       <a href="#sobre">Sobre</a>
       <a class="ext" href="https://wa.me/5538988455917" target="_blank" rel="noopener">WhatsApp ↗</a>
     </div>
@@ -526,9 +530,59 @@
   </div>
 </section>
 
+<section class="section" id="site">
+  <div class="section-head">
+    <div>
+      <p class="kicker">Para a marca</p>
+      <h2>Por que ter um site?</h2>
+    </div>
+    <p class="section-aside">Mesmo simples, com as informações certas, já muda o jogo.</p>
+  </div>
+  <ul class="reasons">
+    <li>
+      <span class="n">01</span>
+      <div>
+        <h3>A marca tem um endereço</h3>
+        <p>O perfil na rede depende de algoritmo e de login. O site fica no nome da marca, aberto para quem procurar.</p>
+      </div>
+    </li>
+    <li>
+      <span class="n">02</span>
+      <div>
+        <h3>A informação está reunida</h3>
+        <p>O que você faz, para quem, horário, cidade, preço quando fizer sentido e como chamar. A pessoa resolve o básico sem ficar perguntando no direct.</p>
+      </div>
+    </li>
+    <li>
+      <span class="n">03</span>
+      <div>
+        <h3>Passa segurança</h3>
+        <p>Uma página curta, com texto claro e contato visível, já sustenta a decisão de quem está comparando. Nome, serviço e um botão bastam para começar.</p>
+      </div>
+    </li>
+    <li>
+      <span class="n">04</span>
+      <div>
+        <h3>Aparece na busca</h3>
+        <p>Quem digita o nome da marca encontra uma página sua, com o que precisa saber, e não só um perfil perdido no meio da rede.</p>
+      </div>
+    </li>
+    <li>
+      <span class="n">05</span>
+      <div>
+        <h3>Simples já conta</h3>
+        <p>Não precisa de um site enorme. Uma página com o essencial — o que é, para quem serve e onde falar — já coloca a marca no ar.</p>
+      </div>
+    </li>
+  </ul>
+  <div class="actions section-cta">
+    <a class="btn" href="https://wa.me/5538988455917" target="_blank" rel="noopener">Quero um site</a>
+  </div>
+</section>
+
 <section class="section" id="sobre">
   <p class="kicker">Sobre</p>
-  <h2>O combinado é simples.</h2>
+  <h2>Como eu trabalho.</h2>
   <ul class="reasons">
     <li>
       <span class="n">01</span>
